@@ -22,7 +22,7 @@ contract VaultTest is Test {
     // Uji alur deposit (Approve -> Deposit)
     function testDeposit() public {
         vm.startPrank(user); // Mulai bertindak sebagai 'user'
-        
+
         token.approve(address(vault), amount); // 1. Beri izin vault ambil token
         vault.deposit(amount); // 2. Lakukan deposit
 
@@ -35,14 +35,14 @@ contract VaultTest is Test {
     // Uji alur withdraw (Deposit -> Withdraw)
     function testWithdraw() public {
         vm.startPrank(user);
-        
+
         token.approve(address(vault), amount);
         vault.deposit(amount);
 
         // Lakukan penarikan setengah saldo
         uint256 withdrawAmount = amount / 2;
         vault.withdraw(withdrawAmount);
-        
+
         vm.stopPrank();
 
         assertEq(vault.balances(user), amount - withdrawAmount);

@@ -6,7 +6,7 @@ import "../src/RupiahToken.sol";
 
 contract RupiahTokenTest is Test {
     RupiahToken public token;
-    
+
     // Kita pakai address(this) sebagai owner sejati agar tidak bentrok dengan context Forge
     address public owner;
     address public hacker = address(0x999);
@@ -33,10 +33,10 @@ contract RupiahTokenTest is Test {
 
         // 1. vm.prank sets msg.sender for the next external call
         vm.prank(hacker);
-        
+
         // 2. vm.expectRevert expects the next external call to revert with OwnableUnauthorizedAccount
         vm.expectRevert(abi.encodeWithSelector(RupiahToken.OwnableUnauthorizedAccount.selector, hacker));
-        
+
         // 3. Panggil fungsi yang akan gagal
         token.mint(user, amount);
     }

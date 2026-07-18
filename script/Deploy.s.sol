@@ -11,7 +11,7 @@ contract Deploy is Script {
 
         // 1. Deploy RupiahToken
         RupiahToken token = new RupiahToken();
-        
+
         // 2. Deploy Vault dengan alamat token yang baru saja dideploy
         Vault vault = new Vault(address(token));
 

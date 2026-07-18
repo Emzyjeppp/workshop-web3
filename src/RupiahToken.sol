@@ -12,7 +12,7 @@ contract RupiahToken is ERC20 {
     constructor() ERC20("Rupiah Token", "IDRT") {
         // Simpan owner secara manual
         _owner = msg.sender;
-        
+
         // Cetak 1.000.000 token langsung ke owner (deployer)
         _mint(msg.sender, 1000000 * 10 ** decimals());
     }
