@@ -1,15 +1,12 @@
 # 🏦 Tabungan Crypto — Workshop Smart Contract (Solidity + Foundry)
 
-Proyek workshop untuk belajar membuat smart contract Ethereum dari nol menggunakan
-**Solidity** dan **Foundry**. Kita membangun aplikasi **tabungan crypto** sederhana:
+📢 **Proyek Praktikum: Pertemuan ke-5 UTDI Hackathon Club**  
+Repositori ini dikembangkan untuk sesi workshop pembuatan smart contract Ethereum dari nol menggunakan **Solidity** dan **Foundry**. Di sini, kita membangun aplikasi **celengan/tabungan crypto** sederhana:
 
 - **`RupiahToken` (ERC20)** — token "Rupiah" (IDRT) yang berperan sebagai uang.
-- **`Vault`** — celengan tempat menyimpan token Rupiah; mencatat saldo tiap orang
-  dan bisa ditarik kapan saja.
+- **`Vault`** — celengan tempat menyimpan token Rupiah; mencatat saldo tiap orang dan bisa ditarik kapan saja.
 
-> Catatan: ini versi sederhana untuk belajar. Saldo dicatat **1:1** (tanpa
-> perhitungan _shares_, bunga, atau yield). Fokusnya: memahami kontrak ERC20,
-> Vault, dan pola interaksi antar-kontrak.
+> 📝 **Catatan:** Ini adalah versi sederhana untuk tujuan pembelajaran. Saldo dicatat **1:1** (tanpa perhitungan *shares*, bunga, atau yield). Fokus utamanya adalah memahami standar ERC20, interaksi antar-kontrak, serta pengujian menggunakan Foundry.
 
 ---
 
