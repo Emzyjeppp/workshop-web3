@@ -1,6 +1,6 @@
 # 🏦 Tabungan Crypto — Workshop Smart Contract (Solidity + Foundry)
 
-📢 **Proyek Praktikum: Pertemuan ke-5 UTDI Hackathon Club**  
+📢 **Proyek Praktikum: Sesi 6: Web3 Introduction — UTDI Hackathon Club**  
 Repositori ini dikembangkan untuk sesi workshop pembuatan smart contract Ethereum dari nol menggunakan **Solidity** dan **Foundry**. Di sini, kita membangun aplikasi **celengan/tabungan crypto** sederhana:
 
 - **`RupiahToken` (ERC20)** — token "Rupiah" (IDRT) yang berperan sebagai uang.
@@ -199,21 +199,40 @@ cast call $VAULT "balances(address)(uint256)" $ME --rpc-url $RPC
 
 ## 🌐 (Opsional) Deploy ke testnet Sepolia
 
-1. Siapkan akun test, isi sedikit Sepolia ETH dari faucet (mis. faucet Alchemy /
-   Google Cloud Web3 faucet).
-2. Salin env: `cp .env.example .env` lalu isi `SEPOLIA_RPC_URL`, `PRIVATE_KEY`,
-   `ETHERSCAN_API_KEY`.
-3. Muat env & deploy:
-   ```bash
-   source .env
-   forge script script/Deploy.s.sol \
-     --rpc-url $SEPOLIA_RPC_URL \
-     --private-key $PRIVATE_KEY \
-     --broadcast --verify --etherscan-api-key $ETHERSCAN_API_KEY
-   ```
+1. **Persiapan Akun & Saldo:**
+   - Siapkan akun pengujian baru di Rabby Wallet / MetaMask.
+   - Klaim Sepolia ETH gratis untuk membayar biaya gas. Anda bisa menggunakan [Sepolia PoW Faucet](https://sepolia-faucet.pk910.de/) (tidak perlu registrasi, cukup masukkan alamat wallet dan jalankan mining di browser selama 1-2 menit hingga minimal 0.05 SepETH terkumpul).
 
-> ⚠️ **JANGAN** memakai private key akun utama / berisi dana asli. Gunakan akun
-> khusus testing. Jangan commit file `.env`.
+2. **Dapatkan Etherscan API Key:**
+   - Registrasi di [Etherscan](https://etherscan.io/) lalu pergi ke **API Dashboard**.
+   - Buat API Key baru dan salin kodenya.
+
+3. **Konfigurasi Variabel Lingkungan (`.env`):**
+   - Salin file `.env.example` menjadi `.env`:
+     ```bash
+     cp .env.example .env
+     ```
+   - Isi file `.env` dengan data berikut:
+     ```env
+     SEPOLIA_RPC_URL=https://ethereum-sepolia-rpc.publicnode.com
+     PRIVATE_KEY=0xYOUR_TESTNET_PRIVATE_KEY
+     ETHERSCAN_API_KEY=YOUR_ETHERSCAN_API_KEY
+     ```
+
+4. **Jalankan Deployment & Verifikasi Kontrak:**
+   - Di terminal Git Bash Anda, muat file konfigurasi `.env` lalu jalankan deployer script dengan flag `--verify` dan `--legacy`:
+     ```bash
+     source .env
+     forge script script/Deploy.s.sol \
+       --rpc-url $SEPOLIA_RPC_URL \
+       --private-key $PRIVATE_KEY \
+       --broadcast \
+       --verify \
+       --etherscan-api-key $ETHERSCAN_API_KEY \
+       --legacy
+     ```
+
+> ⚠️ **PENTING:** JANGAN PERNAH menggunakan private key akun utama Anda yang berisi dana asli. Gunakan selalu akun khusus testing. File `.env` sudah masuk ke dalam `.gitignore` sehingga tidak akan terunggah ke repositori GitHub.
 
 ---
 
